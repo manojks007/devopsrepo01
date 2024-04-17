@@ -9,10 +9,10 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-mksstrgrg: 'manojrg001'
-mksstrg: 'manojstore01'
-mkscontainer: 'mksterrafcontr'
-mksstrgkey: 'devpipeline.terraform.tfstate'
+bkstrgrg: 'manojrg001'
+bkstrg: 'manojstore01'
+bkcontainer: 'mksterrafcontr'
+bkstrgkey: 'devpipeline.terraform.tfstate'
 
 stages:
   - stage: tfvalidate
@@ -30,10 +30,10 @@ stages:
             provider: 'azurerm'
             command: 'init'
             backendServiceArm: 'mks007gmailSerConn'
-            backendAzureRmResourceGroupName: '$(mksstrgrg)'
-            backendAzureRmStorageAccountName: '$(mksstrg)'
-            backendAzureRmContainerName: '$(mkscontainer)'
-            backendAzureRmKey: '$(mksstrgkey)'
+            backendAzureRmResourceGroupName: '$(bkstrgrg)'
+            backendAzureRmStorageAccountName: '$(bkstrg)'
+            backendAzureRmContainerName: '$(bkcontainer)'
+            backendAzureRmKey: '$(bkstrgkey)'
         - task: TerraformTaskV4@4
           displayName: validate
           inputs:
@@ -55,10 +55,10 @@ stages:
             provider: 'azurerm'
             command: 'init'
             backendServiceArm: 'mks007gmailSerConn'
-            backendAzureRmResourceGroupName: '$(mksstrgrg)'
-            backendAzureRmStorageAccountName: '$(mksstrg)'
-            backendAzureRmContainerName: '$(mkscontainer)'
-            backendAzureRmKey: '$(mksstrgkey)'
+            backendAzureRmResourceGroupName: '$(bkstrgrg)'
+            backendAzureRmStorageAccountName: '$(bkstrg)'
+            backendAzureRmContainerName: '$(bkcontainer)'
+            backendAzureRmKey: '$(bkstrgkey)'
         - task: TerraformTaskV4@4
           displayName: plan
           inputs:
